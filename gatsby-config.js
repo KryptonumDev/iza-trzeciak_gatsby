@@ -38,5 +38,6 @@ module.exports = {
     //     theme_color: ``,
     //   },
     // },
-  ]
+  ],
+  trailingSlash: "never"
 };
