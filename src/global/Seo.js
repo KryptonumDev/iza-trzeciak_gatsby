@@ -1,12 +1,21 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby";
 
-export const Seo = ({ title, description, url, children, breadcrumbs, faqSchema }) => {
+const Seo = ({ title, description, url, children, breadcrumbs, faqSchema }) => {
   const { site, global } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
           siteUrl
+        }
+      }
+      global: sanityGlobal {
+        seo {
+          og_Img {
+            asset {
+              url
+            }
+          }
         }
       }
     }
@@ -51,3 +60,5 @@ export const Seo = ({ title, description, url, children, breadcrumbs, faqSchema 
     </>
   )
 }
+
+export default Seo;

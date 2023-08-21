@@ -1,15 +1,14 @@
 import React from 'react';
 import Layout from "./src/global/Layout"
-import ManropeRegular from "./src/resources/fonts/Manrope-Regular.woff2"
-import ManropeSemiBold from "./src/resources/fonts/Manrope-SemiBold.woff2"
-import ManropeBold from "./src/resources/fonts/Manrope-Bold.woff2"
+import ErodeMedium from "./src/resources/fonts/Erode-Medium.woff2"
+import ErodeBold from "./src/resources/fonts/Erode-Bold.woff2"
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: "pl" })
   setHeadComponents([
     <link
       rel="preload"
-      href={ManropeRegular}
+      href={ErodeMedium}
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
@@ -17,15 +16,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     />,
     <link
       rel="preload"
-      href={ManropeSemiBold}
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-      key="interFont"
-    />,
-    <link
-      rel="preload"
-      href={ManropeBold}
+      href={ErodeBold}
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"

@@ -3,6 +3,17 @@ import GlobalStyle from "../global/GlobalStyle";
 import Nav from "../components/organisms/Nav";
 import Footer from "../components/organisms/Footer";
 
+const links = [
+  {
+    name: 'Usługi',
+    url: '/ppoz-uslugi'
+  },
+  {
+    name: 'Współpraca',
+    url: '/ppoz-wspolpraca'
+  }
+]
+
 const Layout = ({ children }) => {
   const handleTabKey = (e) => {
     (e.key === 'Tab') && document.documentElement.classList.add('tabbing')
@@ -23,11 +34,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Nav />
+      <Nav links={links} />
       <main id="main">
         {children}
       </main>
-      <Footer />
+      <Footer links={links} />
     </>
   );
 }

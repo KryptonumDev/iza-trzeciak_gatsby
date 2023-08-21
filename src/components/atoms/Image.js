@@ -6,6 +6,7 @@ const Image = ({ data, ...props}) => {
     <GatsbyImage
       image={data.asset.gatsbyImageData}
       alt={data.asset.altText || ''}
+      className="img"
       {...props}
     />
   );

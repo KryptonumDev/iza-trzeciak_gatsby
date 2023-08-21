@@ -1,4 +1,6 @@
 import React from "react"
+import { graphql } from "gatsby";
+import Seo from "../global/Seo";
 
 const NotFoundPage = () => {
   return (
@@ -6,6 +8,35 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export const query = graphql`
+  query {
+    page: sanityNotFound {
+      # Hero
+      hero_Heading
+      hero_Paragraph
+      hero_Cta {
+        theme
+        text
+        href
+      }
+      # SEO
+      seo {
+        title
+        description
+      }
+    }
+  }
+`
 
-export const Head = () => <title>Not found</title>
+export const Head = ({
+  data: {
+    page: { seo }
+  }
+}) => (
+  <Seo
+    title={seo?.title}
+    description={seo?.description}
+  />
+)
+
+export default NotFoundPage;
