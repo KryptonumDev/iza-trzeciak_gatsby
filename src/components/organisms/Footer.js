@@ -37,13 +37,13 @@ const Footer = ({ links }) => {
         </ul>
         <ul className="social">
           <li>
-            <Link to={global.linkedin}>
+            <a href={global.linkedin} target='_blank' rel="noreferrer">
               <Linkedin />
               <span>LinkedIn</span>
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to={global.facebook}>
+            <Link href={global.facebook} target='_blank' rel="noreferrer">
               <Facebook />
               <span>Facebook</span>
             </Link>
