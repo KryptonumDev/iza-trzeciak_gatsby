@@ -34,6 +34,15 @@ const WrapperNav = styled.nav`
   padding: ${Clamp(24, 32, 32, 'px')} 0 16px;
   border-bottom: 1px solid var(--primary-400);
   background-color: var(--primary-100);
+  a {
+    transition: color .3s;
+    &:hover {
+      color: var(--primary-700);
+    }
+    &:active {
+      color: var(--primary-900);
+    }
+  }
   ul {
     list-style-type: none;
     display: flex;
@@ -43,7 +52,6 @@ const WrapperNav = styled.nav`
       line-height: 1;
       a {
         padding: 4px 0;
-       
       }
       &:not(:last-child) {
         margin-right: ${Clamp(12, 24, 24, 'px')};
