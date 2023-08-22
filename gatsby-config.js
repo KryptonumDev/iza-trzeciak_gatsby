@@ -25,19 +25,19 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: ``,
-    //     short_name: ``,
-    //     lang: `pl`,
-    //     display: `standalone`,
-    //     icon: `src/resources/images/logo.webp`,
-    //     start_url: `/`,
-    //     background_color: ``,
-    //     theme_color: ``,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: `Rzeczoznawca do spraw zabezpieczeń przeciwpożarowych - Iza Trzeciak`,
+        short_name: `Iza Trzeciak`,
+        lang: `pl`,
+        display: `standalone`,
+        icon: `src/resources/images/logo.png`,
+        start_url: `/`,
+        background_color: `#F8FBFD`,
+        theme_color: `#F8FBFD`,
+      },
+    },
   ],
   trailingSlash: "never"
 };
