@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Seo from "../global/Seo";
 import Hero from "../components/sections/Homepage/Hero";
 import Services from "../components/sections/Homepage/Services";
+import Involved from "../components/sections/Homepage/Involved";
 
 const IndexPage = ({
   data: { page: {
@@ -15,6 +16,9 @@ const IndexPage = ({
     services_Paragraph,
     services_Cta,
     services_List,
+    involved_Heading,
+    involved_List,
+    involved_Cta,
   }}
 }) => {
   return (
@@ -31,6 +35,11 @@ const IndexPage = ({
         services_Paragraph,
         services_Cta,
         services_List
+      }} />
+      <Involved data={{
+        involved_Heading,
+        involved_List,
+        involved_Cta,
       }} />
     </>
   )
@@ -65,6 +74,14 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED)
           }
         }
+      }
+      # Involved
+      involved_Heading
+      involved_List
+      involved_Cta {
+        theme
+        text
+        href
       }
       # SEO
       seo {
