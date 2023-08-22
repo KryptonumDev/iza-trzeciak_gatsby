@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { Clamp } from "../../utils/functions";
 
 const Button = ({ data, theme = 'primary', children, to, className, ...props }) => {
   if(data){
@@ -8,7 +9,7 @@ const Button = ({ data, theme = 'primary', children, to, className, ...props }) 
     to = data.href;
     children = data.text;
   }
-  const isExternal = to && to.startsWith('https://');
+  const isExternal = to?.startsWith('https://');
 
   const commonProps = {
     className: `cta ${className}`,
@@ -38,7 +39,7 @@ const Button = ({ data, theme = 'primary', children, to, className, ...props }) 
 
 const StyledAnchor = styled.a`
   font-weight: 500;
-  padding: 0 48px;
+  padding: 0 ${Clamp(16, 24, 48, 'px')};
   height: 50px;
   display: inline-flex;
   align-items: center;

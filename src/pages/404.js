@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby";
 import Seo from "../global/Seo";
+import Heading from "../utils/Heading";
 import Markdown from "../utils/Markdown";
 import Button from "../components/atoms/Button";
 import styled from "styled-components";
@@ -16,7 +17,7 @@ const NotFoundPage = ({
   return (
     <Wrapper>
       <header>
-        <Markdown components={{ p: 'h1' }}>{hero_Heading}</Markdown>
+        <Heading leve='h1'>{hero_Heading}</Heading>
         <Markdown className="paragraph">{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </header>

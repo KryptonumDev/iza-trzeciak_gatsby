@@ -43,10 +43,10 @@ const Footer = ({ links }) => {
             </a>
           </li>
           <li>
-            <Link href={global.facebook} target='_blank' rel="noreferrer">
+            <a href={global.facebook} target='_blank' rel="noreferrer">
               <Facebook />
               <span>Facebook</span>
-            </Link>
+            </a>
           </li>
         </ul>
         <ul className="legal">

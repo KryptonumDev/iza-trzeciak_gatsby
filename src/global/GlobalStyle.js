@@ -62,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--primary-100);
     color: var(--primary-500);
     font-size: ${Clamp(18, 18, 20)};
+    line-height: 140%;
   }
   :focus {
     outline: none;
@@ -72,13 +73,13 @@ const GlobalStyle = createGlobalStyle`
   }
   main,
   .max-width {
-    max-width: 1366px;
+    max-width: 1280px;
     width: calc(100% - var(--pageMargin) * 2);
     margin: 0 auto;
     height: 100%;
   }
   svg {
-    vertical-align: top;
+    display: block;
   }
   a {
     text-decoration: none;
@@ -112,10 +113,23 @@ const GlobalStyle = createGlobalStyle`
       font-weight: inherit;
       color: var(--primary-600);
     }
+    @media (max-width: 369px){
+      zoom: .8;
+    }
   }
   h1 {
     font-size: ${Clamp(40, 56, 64)};
     letter-spacing: -.025em;
+    line-height: 114%;
+  }
+  h2 {
+    font-size: ${Clamp(36, 44, 56)};
+    letter-spacing: -.028em;
+    line-height: 114%;
+  }
+  h3 {
+    font-size: ${Clamp(28, 32, 32)};
+    line-height: 125%;
   }
   p {
     strong {

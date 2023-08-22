@@ -24,7 +24,7 @@ export const Logo = () => (
 )
 
 export const Signature = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='143' height='34' fill='none'>
+  <svg xmlns='http://www.w3.org/2000/svg' width='143' height='34' fill='none' className='signature'>
     <mask
       id='a'
       width='143'

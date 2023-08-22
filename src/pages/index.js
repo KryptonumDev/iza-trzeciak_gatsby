@@ -1,10 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby";
 import Seo from "../global/Seo";
+import Hero from "../components/sections/Homepage/Hero";
 
-const IndexPage = () => {
+const IndexPage = ({
+  data: { page: {
+    hero_Heading,
+    hero_Subheading,
+    hero_Paragraph,
+    hero_Cta,
+  }}
+}) => {
   return (
-    <h1>Homepage</h1>
+    <>
+      <Hero data={{
+        hero_Heading,
+        hero_Subheading,
+        hero_Paragraph,
+        hero_Cta,
+      }} />
+    </>
   )
 }
 
@@ -13,6 +28,13 @@ export const query = graphql`
     page: sanityHomepage {
       # Hero
       hero_Heading
+      hero_Subheading
+      hero_Paragraph
+      hero_Cta {
+        theme
+        text
+        href
+      }
       # SEO
       seo {
         title
