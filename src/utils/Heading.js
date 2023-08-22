@@ -1,14 +1,16 @@
 import React from "react";
+import rehypeRaw from "rehype-raw";
 import Markdown from "./Markdown";
 
 const Heading = ({ level = 'h2', children, ...props }) => {
+  const HeadingComponent = level;
   return (
     <Markdown
       components={{
-        'p': level,
+        'p': ({ children }) => <HeadingComponent {...props}>{children}</HeadingComponent>,
       }}
-      {...props}
-    >
+      rehypePlugins={[rehypeRaw]}
+    > 
       {children}
     </Markdown>
   );

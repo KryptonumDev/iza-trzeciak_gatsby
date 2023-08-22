@@ -17,7 +17,7 @@ const NotFoundPage = ({
   return (
     <Wrapper>
       <header>
-        <Heading leve='h1'>{hero_Heading}</Heading>
+        <Heading level='h1'>{hero_Heading}</Heading>
         <Markdown className="paragraph">{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </header>
@@ -33,12 +33,9 @@ const Wrapper = styled.section`
       text-align: center;
     }
   }
-  h1 {
-    margin-bottom: ${Clamp(16, 16, 24, 'px')};
-  }
   .paragraph {
     font-size: ${Clamp(28, 32, 32)};
-    margin-bottom: ${Clamp(32, 32, 48, 'px')};
+    margin: ${Clamp(16, 16, 24, 'px')} 0 ${Clamp(32, 32, 48, 'px')};
   }
 `
 

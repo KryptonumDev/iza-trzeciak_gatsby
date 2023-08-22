@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { Clamp } from "../../utils/functions";
 
 const Button = ({ data, theme = 'primary', children, to, className, ...props }) => {
   if(data){
@@ -39,13 +38,14 @@ const Button = ({ data, theme = 'primary', children, to, className, ...props }) 
 
 const StyledAnchor = styled.a`
   font-weight: 500;
-  padding: 0 ${Clamp(16, 24, 48, 'px')};
+  padding: 0 48px;
   height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   @media (max-width: 499px){
     width: 100%;
+    padding: 0 16px;
   }
   overflow: hidden;
   position: relative;
@@ -63,7 +63,7 @@ const StyledAnchor = styled.a`
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%) scale(0);
-    transition: transform .3s var(--easing);
+    transition: transform .4s var(--easing);
     z-index: -1;
     border-radius: 50%;
   }

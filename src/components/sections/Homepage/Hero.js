@@ -21,7 +21,7 @@ const Hero = ({
         <Signature />
       </header>
       <div className="copy">
-        <Heading level='h3'>{hero_Subheading}</Heading>
+        <Heading level='h2' className='h3'>{hero_Subheading}</Heading>
         <Markdown className="paragraph">{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </div>
@@ -32,6 +32,7 @@ const Hero = ({
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
   gap: 32px;
   header {
     .signature {

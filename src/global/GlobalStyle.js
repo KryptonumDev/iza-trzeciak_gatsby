@@ -109,6 +109,9 @@ const GlobalStyle = createGlobalStyle`
   }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
+    span {
+      display: block;
+    }
     strong {
       font-weight: inherit;
       color: var(--primary-600);
@@ -117,19 +120,25 @@ const GlobalStyle = createGlobalStyle`
       zoom: .8;
     }
   }
-  h1 {
+  h1, .h1 {
     font-size: ${Clamp(40, 56, 64)};
     letter-spacing: -.025em;
     line-height: 114%;
   }
-  h2 {
+  h2, .h2 {
     font-size: ${Clamp(36, 44, 56)};
     letter-spacing: -.028em;
     line-height: 114%;
   }
-  h3 {
+  h3, .h3 {
     font-size: ${Clamp(28, 32, 32)};
     line-height: 125%;
+  }
+
+  .cta-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
   }
   p {
     strong {
