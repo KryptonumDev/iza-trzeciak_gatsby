@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
     --error-800: #763E3E;
     --error-900: #5A2F2F;
 
+    --easing: cubic-bezier(0.6, 0.4, 0.2, 0.8);
     --pageMargin: 40px;
     @media (max-width: 849px){
      --pageMargin: 80px;
@@ -108,8 +109,13 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     strong {
+      font-weight: inherit;
       color: var(--primary-600);
     }
+  }
+  h1 {
+    font-size: ${Clamp(40, 56, 64)};
+    letter-spacing: -.025em;
   }
   p {
     strong {
@@ -117,13 +123,11 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 700;
     }
   }
-
   main {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: ${Clamp(96, 144, 172, "px")};
-    margin-top: ${Clamp(32, 96, 128, "px")};
-    margin-bottom: ${Clamp(96, 144, 172, "px")};
+    margin: ${Clamp(32, 96, 128, "px")} auto;
   }
 `
 

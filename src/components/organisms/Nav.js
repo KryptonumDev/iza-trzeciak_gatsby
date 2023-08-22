@@ -30,6 +30,7 @@ const WrapperNav = styled.nav`
   left: 0;
   display: flex;
   align-items: center;
+  z-index: 9;
   justify-content: space-between;
   padding: ${Clamp(24, 32, 32, 'px')} 0 16px;
   border-bottom: 1px solid var(--primary-400);
@@ -71,6 +72,7 @@ const WrapperNav = styled.nav`
 `
 
 const WrapperSkipToMainContent = styled.a`
+  z-index: 10;
   opacity: 0;
   pointer-events: none;
   position: absolute;
