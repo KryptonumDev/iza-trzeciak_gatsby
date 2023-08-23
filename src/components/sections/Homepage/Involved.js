@@ -23,7 +23,7 @@ const Involved = ({
       {involved_List.map((item, i) => (
         <div className="item" key={i}>
           <div className="iterator">
-            <svg width='48' viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill='var(--primary-100)' stroke='var(--primary-400)' strokeWidth='1' strokeDasharray='201 201' style={{ padding: '2px', overflow: 'visible' }}>
+            <svg width='64' viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill='var(--primary-100)' stroke='var(--primary-400)' strokeWidth='1' strokeDasharray='201 201' style={{ padding: '2px', overflow: 'visible' }}>
               <circle cx="32" cy="32" r="32" />
             </svg>
             <span>0{i+1}</span>
