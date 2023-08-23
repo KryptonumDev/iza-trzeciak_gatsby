@@ -8,17 +8,19 @@ const Nav = ({ links }) => {
   return (
     <>
       <WrapperSkipToMainContent href="#main">Przejdź do głównej treści</WrapperSkipToMainContent>
-      <WrapperNav className="max-width">
-        <Link to="/" aria-label="Strona główna">
-          <Logo />
-        </Link>
-        <ul className="links">
-          {links.map((link, i) => (
-            <li key={i}>
-              <Link to={link.url}>{link.name}</Link>
-            </li>
-          ))}
-        </ul>
+      <WrapperNav>
+        <div className="max-width">
+          <Link to="/" aria-label="Strona główna">
+            <Logo />
+          </Link>
+          <ul className="links">
+            {links.map((link, i) => (
+              <li key={i}>
+                <Link to={link.url}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </WrapperNav>
     </>
   );
@@ -28,13 +30,15 @@ const WrapperNav = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
   z-index: 9;
-  justify-content: space-between;
-  padding: ${Clamp(24, 32, 32, 'px')} 0 16px;
-  border-bottom: 1px solid var(--primary-400);
   background-color: var(--primary-100);
+  > .max-width {
+    padding: ${Clamp(24, 32, 32, 'px')} 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--primary-400);
+  }
   a {
     transition: color .3s;
     &:hover {

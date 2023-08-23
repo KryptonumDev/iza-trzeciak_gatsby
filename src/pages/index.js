@@ -4,6 +4,7 @@ import Seo from "../global/Seo";
 import Hero from "../components/sections/Homepage/Hero";
 import Services from "../components/sections/Homepage/Services";
 import Involved from "../components/sections/Homepage/Involved";
+import Process from "../components/sections/Homepage/Process";
 
 const IndexPage = ({
   data: { page: {
@@ -19,6 +20,9 @@ const IndexPage = ({
     involved_Heading,
     involved_List,
     involved_Cta,
+    process_Heading,
+    process_Subheading,
+    process_Paragraph,
   }}
 }) => {
   return (
@@ -40,6 +44,11 @@ const IndexPage = ({
         involved_Heading,
         involved_List,
         involved_Cta,
+      }} />
+      <Process data={{
+        process_Heading,
+        process_Subheading,
+        process_Paragraph,
       }} />
     </>
   )
@@ -83,6 +92,10 @@ export const query = graphql`
         text
         href
       }
+      # Process
+      process_Heading
+      process_Subheading
+      process_Paragraph
       # SEO
       seo {
         title
