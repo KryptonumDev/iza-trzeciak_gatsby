@@ -12,7 +12,7 @@ const Process = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className='focus-light'>
       <div>
         <div className="decorator" aria-hidden="true"><div></div><div></div></div>
         <header>
@@ -28,8 +28,8 @@ const Process = ({
 const Wrapper = styled.section`
   background-color: var(--primary-600);
   color: var(--primary-300);
-  position: relative;
   padding: ${Clamp(48, 64, 64, 'px')} 0;
+  position: relative;
   &::before {
     content: '';
     width: 100vw;

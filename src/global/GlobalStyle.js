@@ -71,6 +71,9 @@ const GlobalStyle = createGlobalStyle`
     outline: 1px solid var(--primary-600);
     outline-offset: 5px;
   }
+  .tabbing .focus-light :focus-visible {
+    outline: 1px solid var(--primary-200);
+  }
   main,
   .max-width {
     max-width: 1280px;
@@ -102,6 +105,14 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     background-color: transparent;
     appearance: none;
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
   }
   iframe {
     border: none;

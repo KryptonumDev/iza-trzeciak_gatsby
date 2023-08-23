@@ -5,6 +5,7 @@ import Hero from "../components/sections/Homepage/Hero";
 import Services from "../components/sections/Homepage/Services";
 import Involved from "../components/sections/Homepage/Involved";
 import Process from "../components/sections/Homepage/Process";
+import Faq from "../components/sections/Faq";
 
 const IndexPage = ({
   data: { page: {
@@ -23,6 +24,7 @@ const IndexPage = ({
     process_Heading,
     process_Subheading,
     process_Paragraph,
+    faq,
   }}
 }) => {
   return (
@@ -50,6 +52,7 @@ const IndexPage = ({
         process_Subheading,
         process_Paragraph,
       }} />
+      <Faq data={faq} />
     </>
   )
 }
@@ -96,6 +99,14 @@ export const query = graphql`
       process_Heading
       process_Subheading
       process_Paragraph
+      # FAQ
+      faq {
+        heading
+        list {
+          question
+          answer
+        }
+      }
       # SEO
       seo {
         title
