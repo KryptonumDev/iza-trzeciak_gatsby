@@ -1,10 +1,9 @@
-import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Clamp } from '../../utils/functions';
 import Heading from '../../utils/Heading';
 import Markdown from '../../utils/Markdown';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Faq = ({ data: { heading, list }}) => {
   const [ opened, setOpened ] = useState(0);
@@ -15,7 +14,7 @@ const Faq = ({ data: { heading, list }}) => {
   }
 
   return (
-    <Wrapper className='focus-light'>
+    <Wrapper className='focus-light sec-wo-margin'>
       <Heading level='h2'>{heading}</Heading>
       <div className="wrapper">
         {list.map((item, i) => (
@@ -46,18 +45,6 @@ const Faq = ({ data: { heading, list }}) => {
 const Wrapper = styled.section`
   background-color: var(--primary-600);
   color: var(--primary-300);
-  position: relative;
-  &::before {
-    content: '';
-    width: 100vw;
-    height: 100%;
-    background-color: inherit;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    z-index: -1;
-  }
   padding: ${Clamp(48, 64, 80, 'px')} 0;
   display: grid;
   @media (min-width: 1199px){

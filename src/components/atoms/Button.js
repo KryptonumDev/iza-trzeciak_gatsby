@@ -20,7 +20,7 @@ const Button = ({ data, theme = 'primary', children, to, className, ...props }) 
     to ? (
       isExternal
       ? (
-        <StyledAnchor as="a" href={to} target="_blank" rel="noreferrer" {...commonProps}>
+          <StyledAnchor as="a" href={to} target="_blank" rel="noreferrer"{...commonProps}>
           {children}
         </StyledAnchor>
       ) : (

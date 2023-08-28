@@ -4,6 +4,7 @@ import Seo from "../global/Seo";
 import Hero from "../components/sections/Hero";
 import Contact from "../components/sections/Contact";
 import Faq from "../components/sections/Faq";
+import CtaSection from "../components/sections/CtaSection";
 
 const CooperationPage = ({
   data: { page: {
@@ -11,6 +12,7 @@ const CooperationPage = ({
     hero_Subheading,
     hero_Paragraph,
     hero_Cta,
+    ctaSection,
     contact,
     faq,
   } }
@@ -23,6 +25,7 @@ const CooperationPage = ({
         hero_Paragraph,
         hero_Cta,
       }} />
+      <CtaSection data={ctaSection} />
       <Contact data={contact} />
       <Faq data={faq} />
     </>
@@ -40,6 +43,15 @@ export const query = graphql`
         theme
         text
         href
+      }
+      ctaSection {
+        heading
+        paragraph
+        cta {
+          theme
+          text
+          href
+        }
       }
       # Contact
       contact {

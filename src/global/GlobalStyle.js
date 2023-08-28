@@ -186,6 +186,21 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .sec-wo-margin {
+    position: relative;
+    &::before {
+      content: '';
+      width: 100vw;
+      height: 100%;
+      background-color: inherit;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      z-index: -1;
+    }
+  }
+
   .link {
     position: relative;
     display: inline-block;
