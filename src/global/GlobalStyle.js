@@ -54,13 +54,13 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     min-width: 320px;
-    font-size: 16px;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
     font-weight: 500;
     font-family: 'Erode', serif;
     background-color: var(--primary-300);
     color: var(--primary-500);
+    font-size: 18px;
     font-size: ${Clamp(18, 18, 20)};
     line-height: 140%;
   }
@@ -100,11 +100,18 @@ const GlobalStyle = createGlobalStyle`
     font-size: .6em;
     vertical-align: top;
   }
+  select {
+    cursor: pointer;
+  }
   input, textarea, button, select {
+    width: 100%;
     font: inherit;
     color: inherit;
     background-color: transparent;
     appearance: none;
+  }
+  [disabled] {
+    cursor: default;
   }
   summary {
     cursor: pointer;
@@ -177,6 +184,28 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--primary-200);
     img {
       padding: 4px;
+    }
+  }
+
+  .link {
+    position: relative;
+    display: inline-block;
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--primary-500);
+      transition: transform .4s var(--easing);
+    }
+    &:hover::before {
+      transform: scaleX(.62);
+    }
+    &:active::before {
+      transform: scaleX(.38);
     }
   }
 
