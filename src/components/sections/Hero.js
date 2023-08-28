@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Clamp } from '../../../utils/functions';
-import Heading from '../../../utils/Heading';
-import Markdown from '../../../utils/Markdown';
-import Button from '../../atoms/Button';
-import { Signature } from '../../atoms/Icons';
+import { Clamp } from '../../utils/functions';
+import Heading from '../../utils/Heading';
+import Markdown from '../../utils/Markdown';
+import Button from '../atoms/Button';
+import { Signature } from '../atoms/Icons';
 
 const Hero = ({
   data: {
@@ -23,7 +23,9 @@ const Hero = ({
       <div className="copy">
         <Heading level='h2' className='h3'>{hero_Subheading}</Heading>
         <Markdown className="paragraph">{hero_Paragraph}</Markdown>
-        <Button data={hero_Cta} />
+        {hero_Cta && (
+          <Button data={hero_Cta} />
+        )}
       </div>
     </Wrapper>
   );

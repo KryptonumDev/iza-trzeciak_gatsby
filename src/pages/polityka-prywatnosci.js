@@ -37,12 +37,13 @@ export const query = graphql`
 export const Head = ({
   data: {
     page: { seo }
-  }
+  },
+  location: { pathname }
 }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
-    url='/polityka-prywatnosci'
+    url={pathname}
   />
 )
 
