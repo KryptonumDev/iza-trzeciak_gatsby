@@ -6,6 +6,7 @@ import Services from "../components/sections/Homepage/Services";
 import Involved from "../components/sections/Homepage/Involved";
 import Process from "../components/sections/Homepage/Process";
 import Faq from "../components/sections/Faq";
+import Contact from "../components/sections/Contact";
 
 const IndexPage = ({
   data: { page: {
@@ -19,11 +20,13 @@ const IndexPage = ({
     services_Cta,
     services_List,
     involved_Heading,
-    involved_List,
+    involved_Paragraph,
     involved_Cta,
+    involved_List,
     process_Heading,
     process_Subheading,
     process_Paragraph,
+    contact,
     faq,
   }}
 }) => {
@@ -44,14 +47,16 @@ const IndexPage = ({
       }} />
       <Involved data={{
         involved_Heading,
-        involved_List,
+        involved_Paragraph,
         involved_Cta,
+        involved_List,
       }} />
       <Process data={{
         process_Heading,
         process_Subheading,
         process_Paragraph,
       }} />
+      <Contact data={contact} />
       <Faq data={faq} />
     </>
   )
@@ -89,16 +94,22 @@ export const query = graphql`
       }
       # Involved
       involved_Heading
-      involved_List
+      involved_Paragraph
       involved_Cta {
         theme
         text
         href
       }
+      involved_List
       # Process
       process_Heading
       process_Subheading
       process_Paragraph
+      # Contact
+      contact {
+        heading
+        paragraph
+      }
       # FAQ
       faq {
         heading

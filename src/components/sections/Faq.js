@@ -14,7 +14,6 @@ const Faq = ({ data: { heading, list }}) => {
     setOpened(i);
   }
 
-
   return (
     <Wrapper className='focus-light'>
       <Heading level='h2'>{heading}</Heading>
@@ -29,9 +28,9 @@ const Faq = ({ data: { heading, list }}) => {
               {opened === i && (
                 <motion.div
                   className="answer"
-                  initial={{ height: 0 }}
-                  animate={{ height: 'auto' }}
-                  exit={{ height: 0 }}
+                  initial={{ height: 0, marginBottom: '0'}}
+                  animate={{ height: 'auto', marginBottom: '16px' }}
+                  exit={{ height: 0, marginBottom: '0' }}
                 >
                   <Markdown>{item.answer}</Markdown>
                 </motion.div>
@@ -66,9 +65,8 @@ const Wrapper = styled.section`
   }
   gap: 32px;
   details {
-    &:not(:first-child){
-      border-top: 1px solid var(--primary-500);
-      margin-top: 16px;
+    &:not(:last-child){
+      border-bottom: 1px solid var(--primary-500);
     }
     > div {
       overflow: hidden;
@@ -77,7 +75,7 @@ const Wrapper = styled.section`
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 32px;
-      padding: 32px 0 16px;
+      padding: 24px 0 16px;
       .indicator {
         width: 24px;
         height: 24px;

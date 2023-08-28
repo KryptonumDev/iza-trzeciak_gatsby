@@ -31,7 +31,7 @@ const WrapperNav = styled.nav`
   top: 0;
   left: 0;
   z-index: 9;
-  background-color: var(--primary-100);
+  background-color: var(--primary-300);
   > .max-width {
     padding: ${Clamp(24, 32, 32, 'px')} 0 16px;
     display: flex;

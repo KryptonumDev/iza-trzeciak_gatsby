@@ -104,7 +104,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
   input, textarea, button, select {
-    width: 100%;
     font: inherit;
     color: inherit;
     background-color: transparent;
@@ -190,6 +189,7 @@ const GlobalStyle = createGlobalStyle`
   .link {
     position: relative;
     display: inline-block;
+    color: var(--primary-600);
     &::before {
       content: '';
       display: inline-block;
@@ -198,7 +198,7 @@ const GlobalStyle = createGlobalStyle`
       left: 0;
       width: 100%;
       height: 1px;
-      background-color: var(--primary-500);
+      background-color: var(--primary-600);
       transition: transform .4s var(--easing);
     }
     &:hover::before {

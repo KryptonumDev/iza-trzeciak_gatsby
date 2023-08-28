@@ -14,7 +14,7 @@ const Footer = ({ links }) => {
         image {
           asset {
             altText
-            gatsbyImageData(placeholder: NONE, width: 56, height: 56)
+            gatsbyImageData(placeholder: NONE, width: 48, height: 48)
           }
         }
       }
@@ -24,7 +24,7 @@ const Footer = ({ links }) => {
   return (
     <FooterWrapper className="max-width">
       <Link className="author" to='/' aria-label="Strona główna">
-        <Image data={global.image} />
+        <Image data={global.image} className='person-border' />
         <Signature />
       </Link>
       <div className="wrapper">
@@ -98,16 +98,8 @@ const FooterWrapper = styled.footer`
         transform: scale(.95);
       }
     }
-    .img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      border: 1px solid var(--primary-400);
-      background-color: var(--primary-200);
-      img {
-        padding: 4px;
-        transition: transform .4s;
-      }
+    .img img {
+      transition: transform .4s;
     }
   }
   .links {
