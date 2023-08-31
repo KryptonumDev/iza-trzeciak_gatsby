@@ -8,7 +8,6 @@ import FormRadio from '../moleculas/FormRadio';
 import ContactFormSteps from './ContactFormSteps';
 import { AnimatePresence, motion } from 'framer-motion';
 import FormCheckbox from '../moleculas/FormCheckbox';
-import { Link } from 'gatsby';
 import { External } from '../atoms/Icons';
 import Button from '../atoms/Button';
 import { Clamp } from '../../utils/functions';
@@ -216,12 +215,14 @@ const ContactForm = ({ email }) => {
             label={
               <>
                 Akceptuję{' '}
-                <Link
-                  to="/polityka-prywatnosci"
+                <a
+                  href="/polityka-prywatnosci"
+                  target='_blank'
+                  rel="noreferrer"
                   className='link'
                   tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
                   >politykę prywatności
-                </Link>
+                </a>
                 <External />
               </>
             }
