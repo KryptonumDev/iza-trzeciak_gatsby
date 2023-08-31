@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
     --error-800: #763E3E;
     --error-900: #5A2F2F;
 
+    --link-color: var(--primary-600);
     --easing: cubic-bezier(0.6, 0.4, 0.2, 0.8);
     --pageMargin: 40px;
     @media (max-width: 849px){
@@ -208,7 +209,7 @@ const GlobalStyle = createGlobalStyle`
   .link {
     position: relative;
     display: inline-block;
-    color: var(--primary-600);
+    color: var(--link-color);
     &::before {
       content: '';
       display: inline-block;
@@ -217,7 +218,7 @@ const GlobalStyle = createGlobalStyle`
       left: 0;
       width: 100%;
       height: 1px;
-      background-color: var(--primary-600);
+      background-color: var(--link-color);
       transition: transform .4s var(--easing);
     }
     &:hover::before {
@@ -240,6 +241,25 @@ const GlobalStyle = createGlobalStyle`
       }
       svg {
         height: 1.4em;
+      }
+    }
+  }
+  .orderedList {
+    list-style-type: none;
+    counter-reset: counter;
+    li {
+      counter-increment: counter;
+      display: grid;
+      grid-template-columns: ${Clamp(32, 32, 40, 'px')} 1fr;
+      gap: 8px;
+      &:not(:last-child){
+        margin-bottom: 12px;
+      }
+      &::before {
+        content: counter(counter);
+      }
+      &:nth-child(-n+9)::before {
+        content: "0" counter(counter);
       }
     }
   }
