@@ -63,12 +63,16 @@ const Wrapper = styled.section`
       grid-template-columns: 1fr auto;
       gap: 32px;
       padding: 24px 0 16px;
+      > span {
+        transition: transform .3s var(--easing);
+      }
       .indicator {
         width: 24px;
         height: 24px;
         border-radius: 50%;
         border: 2px solid rgba(237 240 242 / 50%);
         position: relative;
+        transition: transform .3s var(--easing);
         span {
           display: block;
           position: absolute;
@@ -88,8 +92,19 @@ const Wrapper = styled.section`
     }
     &[data-opened="true"] {
       summary {
+        cursor: default;
         .indicator span:last-child {
           transform: translate(-50%, -50%) rotate(0);
+        }
+      }
+    }
+    &:not([data-opened="true"]){
+      summary:hover {
+        > span {
+          transform: translateX(8px);
+        }
+        .indicator {
+          transform: scale(.9);
         }
       }
     }
