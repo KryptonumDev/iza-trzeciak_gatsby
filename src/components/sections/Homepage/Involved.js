@@ -14,7 +14,7 @@ const Involved = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper id='projekty'>
       <header>
         <Heading type="h2" className="h3">{involved_Heading}</Heading>
         <Markdown className='paragraph'>{involved_Paragraph}</Markdown>

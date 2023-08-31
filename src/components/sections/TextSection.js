@@ -10,18 +10,22 @@ const TextSection = ({ data: { heading, paragraph, text, list } }) => {
     <Wrapper>
       <header>
         <Heading level='h2' className='h3'>{heading}</Heading>
-        <Markdown className='paragraph'>{paragraph}</Markdown>
+        {paragraph && (
+          <Markdown className='paragraph'>{paragraph}</Markdown>
+        )}
       </header>
       <div className="copy">
         <Markdown className='text'>{text}</Markdown>
-        <ul className='list'>
-          {list.map((item, i) => (
-            <li key={i}>
-              <Image data={item.img} />
-              <Markdown className='title'>{item.title}</Markdown>
-            </li>
-          ))}
-        </ul>
+        {list && (
+          <ul className='list'>
+            {list.map((item, i) => (
+              <li key={i}>
+                <Image data={item.img} />
+                <Markdown className='title'>{item.title}</Markdown>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </Wrapper>
   );
@@ -44,6 +48,9 @@ const Wrapper = styled.section`
   .copy {
     .text {
       margin-bottom: ${Clamp(16, 24, 24, 'px')};
+      > :not(:last-child) {
+        margin-bottom: 16px;
+      }
     }
     .list {
       list-style-type: none;

@@ -28,7 +28,7 @@ const Faq = ({ data: { heading, list }}) => {
                 <motion.div
                   className="answer"
                   initial={{ height: 0, marginBottom: '0'}}
-                  animate={{ height: 'auto', marginBottom: '16px' }}
+                  animate={{ height: 'auto', marginBottom: '32px' }}
                   exit={{ height: 0, marginBottom: '0' }}
                 >
                   <Markdown>{item.answer}</Markdown>
@@ -43,6 +43,7 @@ const Faq = ({ data: { heading, list }}) => {
 };
 
 const Wrapper = styled.section`
+  --link-color: var(--primary-300);
   background-color: var(--primary-600);
   color: var(--primary-300);
   padding: ${Clamp(48, 64, 80, 'px')} 0;
