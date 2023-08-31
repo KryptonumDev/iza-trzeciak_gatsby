@@ -11,6 +11,7 @@ const Contact = ({ data: { heading, paragraph } }) => {
   const { global } = useStaticQuery(graphql`
     query {
       global: sanityGlobal {
+        email
         image {
           asset {
             altText
@@ -29,7 +30,7 @@ const Contact = ({ data: { heading, paragraph } }) => {
         </div>
         <Markdown className='paragraph'>{paragraph}</Markdown>
       </header>
-      <ContactForm />
+      <ContactForm email={global.email} />
     </Wrapper>
   );
 };

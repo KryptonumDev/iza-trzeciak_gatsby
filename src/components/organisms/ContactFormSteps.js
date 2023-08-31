@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const steps = [ 'Podstawowe dane', 'Temat rozmowy', 'Podsumowanie' ];
 
-const ContactFormSteps = ({ step, setStep }) => {
+const ContactFormSteps = ({ step, setStep, sent }) => {
   const handleStepClick = (index) => {
-    if (step > index) {
+    if (step > index && !sent) {
       setStep(index);
     }
   };
@@ -20,7 +20,7 @@ const ContactFormSteps = ({ step, setStep }) => {
         >
           <button
             onClick={() => handleStepClick(i)}
-            disabled={step <= i}
+            disabled={step <= i || sent}
           >
             <span>{item}</span>
             <div

@@ -42,7 +42,12 @@ const StyledAnchor = styled.a`
   height: 50px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   justify-content: center;
+  &[disabled] {
+    cursor: default;
+    pointer-events: none;
+  }
   @media (max-width: 499px){
     width: 100%;
     padding: 0 16px;

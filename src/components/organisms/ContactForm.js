@@ -13,6 +13,7 @@ import { External } from '../atoms/Icons';
 import Button from '../atoms/Button';
 import { Clamp } from '../../utils/functions';
 import FormError from '../moleculas/FormError';
+import Loader from '../atoms/Loader';
 
 const subjects = [
   {
@@ -47,7 +48,7 @@ const subjects = [
   },
 ]
 
-const ContactForm = () => {
+const ContactForm = ({ email }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
   const [step, setStep] = useState(0);
   const [ subjectSelected, setSubjectSelected ] = useState(null);
@@ -69,34 +70,41 @@ const ContactForm = () => {
     }
   }
 
+  const handleSentAgain = () => {
+    setSentStatus({ sent: false });
+    setSubjectSelected(false);
+    setStep(0);
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
-    // fetch('/api/newsletter', {
-    //   method: 'POST', 
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({id: NEWSLETTER_GROUPID, ...data})
-    // })
-    // .then(response => response.json())
-    // .then(response => {
-    //   if(response.success){
-    //     setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-    //   } else {
-    //     setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-    //     reset()
-    //   }
-    // })
-    // .catch(() => {
-    //   setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-    //   reset()
-    // })
+    setSentStatus({ sent: true });
+    fetch('/api/contact', {
+      method: 'POST', 
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success){
+        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+        reset();
+      } else {
+        setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+      }
+    })
+    .catch(() => {
+      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+    })
   }
 
   return (
     <Wrapper className='contactForm'>
-      <ContactFormSteps step={step} setStep={setStep} />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <ContactFormSteps step={step} setStep={setStep} sent={sentStatus.success !== undefined} />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <motion.div
           animate={step === 0 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           exit={{ height: 0, opacity: 0 }}
@@ -167,7 +175,7 @@ const ContactForm = () => {
             label="Dodatkowe informacje (opcjonalne)"
             type="text"
             textarea={true}
-            register={register('additionalInfo', { required: true })}
+            register={register('additionalInfo')}
             errors={errors}
           />
           <FormCheckbox
@@ -178,7 +186,12 @@ const ContactForm = () => {
           <Button
             type='submit'
             disabled={sentStatus.sent && sentStatus.success === undefined}
-          >Wyślij formularz</Button>
+          >
+            {(sentStatus.sent && sentStatus.success === undefined) && (
+              <Loader />
+            )}
+            Wyślij formularz
+          </Button>
         </motion.div>
         <AnimatePresence mode="wait">
           {sentStatus.success !== undefined && (
@@ -191,7 +204,7 @@ const ContactForm = () => {
               >
                 <Success />
                 <h3>Wiadomość została wysłana pomyślnie</h3>
-                <Button type="button" onClick={() => setSentStatus({ sent: false })}>Spróbuj przesłać ponownie</Button>
+                <Button type="button" onClick={() => handleSentAgain() }>Wypełnij formularz ponownie</Button>
               </motion.div>
             ) : (
               <motion.div
@@ -204,7 +217,7 @@ const ContactForm = () => {
                 <h3>Wiadomość nie została wysłana</h3>
                 <p>Wyślij formularz jeszcze raz lub spróbuj za jakiś czas</p>
                 <Button type="button" onClick={() => setSentStatus({ sent: false })}>Spróbuj przesłać ponownie</Button>
-                  <p>Jeśli problem się powtarza skontaktuj się ze mną mailowo <a href='mailto:itrzeciak@fpe.pl' className='link'>itrzeciak@fpe.pl</a></p>
+                  <p>Jeśli problem się powtarza skontaktuj się ze mną mailowo <a href={`mailto:${email}`} className='link'>{email}</a></p>
               </motion.div>
             )
           )}
@@ -222,6 +235,7 @@ const Wrapper = styled.section`
     grid-template-columns: auto 1fr;
   }
   form {
+    min-height: 320px;
     > div {
       overflow: hidden;
       padding: 0 8px;
@@ -236,6 +250,7 @@ const Wrapper = styled.section`
       text-align: center;
       position: absolute;
       inset: 0;
+      z-index: 3;
       padding: 32px ${Clamp(16, 24, 32, 'px')};
       &.success {
         background-color: var(--success-100);
@@ -244,10 +259,7 @@ const Wrapper = styled.section`
       &.error {
         background-color: var(--error-100);
         color: var(--error-800);
-        .link {
-          color: var(--error-800);
-          &::before { background-color: var(--error-800) }
-        }
+        --link-color: var(--error-800);
       }
       svg {
         margin-bottom: 12px;

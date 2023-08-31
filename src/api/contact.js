@@ -1,29 +1,31 @@
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_APIKEY);
 
-import { emailRegex, phoneRegex } from '../constants/regex';
+import { regex } from '../components/constants/regex';
 import { removeHtmlTags } from '../utils/functions';
 const senderEmail = {
-  to: 'kontakt@izatrzeciak.pl',
+  name: 'Iza Trzeciak',
+  to: 'kryptonumstudio@gmail.com',
   from: 'kontakt@izatrzeciak.pl'
 };
 
 const isValidEmail = (email) => {
-  return emailRegex.test(email.toLowerCase());
+  return regex.email.test(email.toLowerCase());
 }
 const isValidPhone = (phone) => {
-  return phoneRegex.test(phone);
+  return regex.phone.test(phone);
 }
 
 function constructMessage(data) {
-  const { name, surname, tel, email, message, legal } = data;
+  const { name, email, tel, subject, subjectInfo, additionalInfo, legal } = data;
   return `
 <p>Imię: <b>${name}</b></p>
-${surname && `<p>Nazwisko: <b>${surname}</b></p>`}
-${tel && `<p>Numer telefonu: <b>${tel}</b></p>`}
 <p>Adres e-mail: <b>${email}</b></p>
+${tel && `<p>Numer telefonu: <b>${tel}</b></p>`}
+<p>Temat rozmowy: <b>${subject}</b></p>
+<p>Dokładny temat rozmowy: <b>${subjectInfo}</b></p>
 
-<p>${message}</p>
+${additionalInfo && `<p>${additionalInfo}</p>`}
 
 <br /><br />
 <p>${legal && 'Zaakceptowano politykę prywatności'}</p>`;
@@ -36,16 +38,30 @@ export default function handler(req, res) {
     return res.status(404).send('');
   }
 
-  const { name = '', tel = '', email = '', message = '', legal = '' } = req.body;
+  const { name='', email='', tel='', subject='', subjectInfo='', additionalInfo='', legal='' } = req.body;
 
-  if (name.trim().length === 0 || !isValidEmail(email) || (tel && !isValidPhone(tel)) || message.trim().length === 0 || !legal) {
-    return res.status(422).json({ success: false });
-  }
+  (name.trim().length === 0
+  ||
+  !isValidEmail(email)
+  ||
+  (tel && !isValidPhone(tel))
+  ||
+  subject.trim().length === 0
+  ||
+  subjectInfo.trim().length === 0
+  ||
+  (additionalInfo && additionalInfo.trim().length === 0)
+  ||
+  !legal)
+  && res.status(422).json({ success: false })
 
   const messageBody = constructMessage(req.body);
 
   const emailMessage = {
-    from: { email: senderEmail.from, name: 'Ośrodek Zdrowia w Turośni Koscielnej' },
+    from: {
+      email: senderEmail.from,
+      name: senderEmail.name
+    },
     to: senderEmail.to,
     replyTo: email,
     subject: `Formularz kontaktowy - ${name} przesyła wiadomość`,
