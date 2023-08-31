@@ -295,8 +295,8 @@ const Wrapper = styled.section`
     min-height: 320px;
     > div {
       overflow: hidden;
-      padding: 0 8px;
-      margin: 0 -8px;
+      padding: 8px;
+      margin: -8px;
     }
     position: relative;
     .status {
