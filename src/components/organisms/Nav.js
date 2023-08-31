@@ -83,6 +83,7 @@ const WrapperSkipToMainContent = styled.a`
   left: 0;
   top: 0;
   padding: 13px;
+  background-color: var(--primary-300);
   &:focus-visible {
     opacity: 1;
     pointer-events: auto;

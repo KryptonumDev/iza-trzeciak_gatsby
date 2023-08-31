@@ -1,5 +1,5 @@
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import { regex } from '../constants/regex';
 import FormDropdown from '../moleculas/FormDropdown';
@@ -51,6 +51,7 @@ const subjects = [
 const ContactForm = ({ email }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
   const [step, setStep] = useState(0);
+  const submitRef = useRef(null);
   const [ subjectSelected, setSubjectSelected ] = useState(null);
   
   const {
@@ -74,6 +75,19 @@ const ContactForm = ({ email }) => {
     setSentStatus({ sent: false });
     setSubjectSelected(false);
     setStep(0);
+  }
+
+  const handleKeyDown = async (e) => {
+    if (e && e.key === 'Enter'){
+      const getStep = Number(e.target.getAttribute('data-step'));
+      if (getStep === 0 && await trigger(['name', 'email', 'tel'])) {
+        e.preventDefault();
+        setStep(1);
+      } else if (getStep === 1 && await trigger(['subject', 'subjectInfo'])) {
+        e.preventDefault();
+        setStep(2);
+      }
+    }
   }
 
   const onSubmit = (data) => {
@@ -114,12 +128,18 @@ const ContactForm = ({ email }) => {
             type="text"
             register={register('name', { required: true })}
             errors={errors}
+            data-step='0'
+            tabIndex={step !== 0 ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <FormInput
             label="E-mail"
             type="email"
             register={register('email', { required: true, pattern: regex.email })}
             errors={errors}
+            data-step='0'
+            tabIndex={step !== 0 ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <FormInput
             label="Nr telefonu (opcjonalne)"
@@ -127,11 +147,15 @@ const ContactForm = ({ email }) => {
             placeholder="___-___-___"
             register={register('tel', { pattern: regex.phone })}
             errors={errors}
+            data-step='0'
+            tabIndex={step !== 0 ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <button
             className="formItem link"
             type='button'
             onClick={() => handleNextStep(1)}
+            tabIndex={step !== 0 ? -1 : 0}
           >Przejdź do następnego kroku</button>
         </motion.div>
         <motion.div
@@ -151,6 +175,9 @@ const ContactForm = ({ email }) => {
                 onClick={() => setSubjectSelected(i)}
                 errors={errors}
                 key={i}
+                data-step='1'
+                tabIndex={step !== 1 ? -1 : 0}
+                onKeyDown={(e) => handleKeyDown(e)} 
               />
             ))}
           </div>
@@ -160,11 +187,15 @@ const ContactForm = ({ email }) => {
             values={subjects[subjectSelected]?.dropdown}
             register={register('subjectInfo', { required: true })}
             errors={errors}
+            data-step='1'
+            tabIndex={step !== 1 ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <button
             className="formItem link"
             type='button'
             onClick={() => handleNextStep(2)}
+            tabIndex={step !== 1 ? -1 : 0}
           >Przejdź do następnego kroku</button>
         </motion.div>
         <motion.div
@@ -177,15 +208,34 @@ const ContactForm = ({ email }) => {
             textarea={true}
             register={register('additionalInfo')}
             errors={errors}
+            data-step='2'
+            tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <FormCheckbox
-            label={<>Akceptuję{' '}<Link to="/polityka-prywatnosci" className='link'>politykę prywatności</Link><External /></>}
+            label={
+              <>
+                Akceptuję{' '}
+                <Link
+                  to="/polityka-prywatnosci"
+                  className='link'
+                  tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
+                  >politykę prywatności
+                </Link>
+                <External />
+              </>
+            }
             register={register('legal', { required: true })}
+            data-step='2'
             errors={errors}
+            tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
+            onKeyDown={(e) => handleKeyDown(e)} 
           />
           <Button
             type='submit'
             disabled={sentStatus.sent && sentStatus.success === undefined}
+            tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
+            ref={submitRef}
           >
             {(sentStatus.sent && sentStatus.success === undefined) && (
               <Loader />
@@ -204,7 +254,10 @@ const ContactForm = ({ email }) => {
               >
                 <Success />
                 <h3>Wiadomość została wysłana pomyślnie</h3>
-                <Button type="button" onClick={() => handleSentAgain() }>Wypełnij formularz ponownie</Button>
+                <Button
+                  type="button"
+                  onClick={() => handleSentAgain()}
+                >Wypełnij formularz ponownie</Button>
               </motion.div>
             ) : (
               <motion.div
@@ -216,8 +269,11 @@ const ContactForm = ({ email }) => {
                 <Error />
                 <h3>Wiadomość nie została wysłana</h3>
                 <p>Wyślij formularz jeszcze raz lub spróbuj za jakiś czas</p>
-                <Button type="button" onClick={() => setSentStatus({ sent: false })}>Spróbuj przesłać ponownie</Button>
-                  <p>Jeśli problem się powtarza skontaktuj się ze mną mailowo <a href={`mailto:${email}`} className='link'>{email}</a></p>
+                <Button
+                  type="button"
+                  onClick={() => setSentStatus({ sent: false })
+                }>Spróbuj przesłać ponownie</Button>
+                <p>Jeśli problem się powtarza skontaktuj się ze mną mailowo <a href={`mailto:${email}`} className='link'>{email}</a></p>
               </motion.div>
             )
           )}

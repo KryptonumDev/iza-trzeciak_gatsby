@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import FormError from "./FormError";
 
-const FormDropdown = ({ register, resetField, label, values, errors }) => {
+const FormDropdown = ({ register, resetField, label, values, errors, ...props }) => {
   const [selectedValue, setSelectedValue] = useState('blank');
   
   useEffect(() => {
@@ -22,6 +22,7 @@ const FormDropdown = ({ register, resetField, label, values, errors }) => {
         disabled={!values}
         value={selectedValue}
         onChange={(e) => setSelectedValue(e.target.value)}
+        {...props}
       >
         <option disabled value='blank'>- Wybierz -</option>
         {values?.map((value, i) => (

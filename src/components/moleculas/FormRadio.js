@@ -21,6 +21,10 @@ const Wrapper = styled.label`
   input {
     position: absolute;
     opacity: 0;
+    &:focus-visible + .indicator {
+      outline: 1px solid var(--primary-600);
+      outline-offset: 5px;
+    }
     &:checked + .indicator {
       border-color: var(--primary-500);
       &::before {
