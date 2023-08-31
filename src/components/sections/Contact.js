@@ -22,7 +22,7 @@ const Contact = ({ data: { heading, paragraph } }) => {
   `)
 
   return (
-    <Wrapper>
+    <Wrapper id='kontakt'>
       <header>
         <div>
           <Heading level='h2' className='h3' image={<Image data={global.image} className='person-border' />}>{heading}</Heading>

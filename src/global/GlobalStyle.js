@@ -52,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     touch-action: none;
   }
+  html {
+    scroll-padding-top: 111px;
+    scroll-behavior: smooth;
+  }
   body {
     min-width: 320px;
     overflow-x: hidden;

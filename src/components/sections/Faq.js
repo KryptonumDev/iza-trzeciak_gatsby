@@ -64,6 +64,7 @@ const Wrapper = styled.section`
       gap: 32px;
       padding: 24px 0 16px;
       > span {
+        max-width: 700px;
         transition: transform .3s var(--easing);
       }
       .indicator {
@@ -88,6 +89,12 @@ const Wrapper = styled.section`
             transform: translate(-50%, -50%) rotate(90deg);
           }
         }
+      }
+    }
+    .answer {
+      max-width: 700px;
+      p:not(:last-child) {
+        margin-bottom: 16px;
       }
     }
     &[data-opened="true"] {

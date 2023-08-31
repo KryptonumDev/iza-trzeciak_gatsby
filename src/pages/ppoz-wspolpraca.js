@@ -5,6 +5,7 @@ import Hero from "../components/sections/Hero";
 import Contact from "../components/sections/Contact";
 import Faq from "../components/sections/Faq";
 import CtaSection from "../components/sections/CtaSection";
+import TextSection from "../components/sections/TextSection";
 
 const CooperationPage = ({
   data: { page: {
@@ -12,7 +13,14 @@ const CooperationPage = ({
     hero_Subheading,
     hero_Paragraph,
     hero_Cta,
+    textSection,
+    textSection2,
     ctaSection,
+    textSection3,
+    textSection4,
+    textSection5,
+    ctaSection2,
+    textSection6,
     contact,
     faq,
   } }
@@ -25,7 +33,14 @@ const CooperationPage = ({
         hero_Paragraph,
         hero_Cta,
       }} />
+      <TextSection data={textSection} />
+      <TextSection data={textSection2} />
       <CtaSection data={ctaSection} />
+      <TextSection data={textSection3} />
+      <TextSection data={textSection4} />
+      <TextSection data={textSection5} />
+      <CtaSection data={ctaSection2} />
+      <TextSection data={textSection6} />
       <Contact data={contact} />
       <Faq data={faq} />
     </>
@@ -44,6 +59,37 @@ export const query = graphql`
         text
         href
       }
+      # Text Section
+      textSection {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
+        }
+      }
+      # Text Section
+      textSection2 {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
+        }
+      }
+      # CTA Section
       ctaSection {
         heading
         paragraph
@@ -51,6 +97,76 @@ export const query = graphql`
           theme
           text
           href
+        }
+      }
+      # Text Section
+      textSection3 {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
+        }
+      }
+      # Text Section
+      textSection4 {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
+        }
+      }
+      # Text Section
+      textSection5 {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
+        }
+      }
+      # CTA Section
+      ctaSection2 {
+        heading
+        paragraph
+        cta {
+          theme
+          text
+          href
+        }
+      }
+      # Text Section
+      textSection6 {
+        heading
+        paragraph
+        text
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED width: 48, height: 48)
+            }
+          }
+          title
         }
       }
       # Contact
