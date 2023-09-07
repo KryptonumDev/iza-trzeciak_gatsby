@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { regex } from '../constants/regex';
 import FormDropdown from '../moleculas/FormDropdown';
 import FormInput from '../moleculas/FormInput';
 import FormRadio from '../moleculas/FormRadio';
@@ -13,6 +12,7 @@ import Button from '../atoms/Button';
 import { Clamp } from '../../utils/functions';
 import FormError from '../moleculas/FormError';
 import Loader from '../atoms/Loader';
+import { regex } from '../../constants/regex';
 
 const subjects = [
   {
@@ -119,6 +119,7 @@ const ContactForm = ({ email }) => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <motion.div
+          initial={{ height: 'auto', opacity: 1 }}
           animate={step === 0 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           exit={{ height: 0, opacity: 0 }}
         >
@@ -158,6 +159,7 @@ const ContactForm = ({ email }) => {
           >Przejdź do następnego kroku</button>
         </motion.div>
         <motion.div
+          initial={{ height: 0, opacity: 0 }}
           animate={step === 1 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           exit={{ height: 0, opacity: 0 }}
         >
@@ -198,6 +200,7 @@ const ContactForm = ({ email }) => {
           >Przejdź do następnego kroku</button>
         </motion.div>
         <motion.div
+          initial={{ height: 0, opacity: 0 }}
           animate={step === 2 ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
           exit={{ height: 0, opacity: 0 }}
         >

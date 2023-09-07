@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Clamp } from '../../utils/functions';
 import Heading from '../../utils/Heading';
 import Markdown from '../../utils/Markdown';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Faq = ({ data: { heading, list }}) => {
   const [ opened, setOpened ] = useState(0);
@@ -23,18 +23,13 @@ const Faq = ({ data: { heading, list }}) => {
               <Markdown components={{ p: 'span' }}>{item.question}</Markdown>
               <div className="indicator" aria-hidden='true'><span></span><span></span></div>
             </summary>
-            <AnimatePresence mode="wait">
-              {opened === i && (
-                <motion.div
-                  className="answer"
-                  initial={{ height: 0, marginBottom: '0'}}
-                  animate={{ height: 'auto', marginBottom: '32px' }}
-                  exit={{ height: 0, marginBottom: '0' }}
-                >
-                  <Markdown>{item.answer}</Markdown>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div
+              className="answer"
+              initial={i === 0 ? { height: 'auto', marginBottom: '32px' } : { height: 0, marginBottom: '0' }}
+              animate={opened === i ? { height: 'auto', marginBottom: '32px' } : { height: 0, marginBottom: '0' }}
+            >
+              <Markdown>{item.answer}</Markdown>
+            </motion.div>
           </details>
         ))}
       </div>
