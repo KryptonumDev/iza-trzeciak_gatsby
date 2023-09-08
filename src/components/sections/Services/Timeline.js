@@ -10,7 +10,7 @@ const Timeline = ({
   onRight=false,
 }) => {
   return (
-    <Wrapper data-onRight={onRight}>
+    <Wrapper data-onright={onRight}>
       <Heading level='h2' className='h3'>{heading}</Heading>
       <ul className="wrapper">
         {list.map(({ year, description }, i) => (
@@ -26,7 +26,7 @@ const Timeline = ({
 
 const Wrapper = styled.section`
   max-width: ${800 / 16}rem;
-  &[data-onRight="true"]{
+  &[data-onright="true"]{
     margin-left: auto;
   }
   h2 {
