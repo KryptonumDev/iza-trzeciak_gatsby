@@ -1,7 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_APIKEY);
 
-import { regex } from '../components/constants/regex';
+import { regex } from '../constants/regex';
 import { removeHtmlTags } from '../utils/functions';
 const senderEmail = {
   name: 'Iza Trzeciak',
