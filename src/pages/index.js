@@ -130,11 +130,14 @@ export const query = graphql`
 export const Head = ({
   data: {
     page: { seo }
-  }
+  },
 }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
+    breadcrumbs={[
+      { name: "Strona główna", path: '' },
+    ]}
   />
 )
 

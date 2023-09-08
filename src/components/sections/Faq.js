@@ -4,6 +4,7 @@ import { Clamp } from '../../utils/functions';
 import Heading from '../../utils/Heading';
 import Markdown from '../../utils/Markdown';
 import { motion } from 'framer-motion';
+import SchemaFaq from '../../global/Schema/Faq';
 
 const Faq = ({ data: { heading, list }}) => {
   const [ opened, setOpened ] = useState(0);
@@ -33,6 +34,7 @@ const Faq = ({ data: { heading, list }}) => {
           </details>
         ))}
       </div>
+      <SchemaFaq data={list} />
     </Wrapper>
   );
 };

@@ -44,6 +44,10 @@ export const Head = ({
     title={seo?.title}
     description={seo?.description}
     url={pathname}
+    breadcrumbs={[
+      { name: "Strona główna", path: '' },
+      { name: "Polityka prywatności", path: pathname },
+    ]}
   />
 )
 
