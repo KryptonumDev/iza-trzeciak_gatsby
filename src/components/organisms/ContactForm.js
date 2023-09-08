@@ -50,7 +50,6 @@ const subjects = [
 const ContactForm = ({ email }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
   const [step, setStep] = useState(0);
-  const submitRef = useRef(null);
   const [ subjectSelected, setSubjectSelected ] = useState(null);
   
   const {
@@ -239,7 +238,6 @@ const ContactForm = ({ email }) => {
             type='submit'
             disabled={sentStatus.sent && sentStatus.success === undefined}
             tabIndex={(step !== 2 || sentStatus.success !== undefined) ? -1 : 0}
-            ref={submitRef}
           >
             {(sentStatus.sent && sentStatus.success === undefined) && (
               <Loader />
