@@ -6,7 +6,7 @@ const previewEnabled = (process.env.GATSBY_IS_PREVIEW || "false").toLowerCase() 
 module.exports = {
   siteMetadata: {
     title: `Iza Trzeciak`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://izatrzeciak.pl`
   },
   plugins: [
     {
