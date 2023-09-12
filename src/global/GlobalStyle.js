@@ -175,7 +175,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     grid-template-columns: 1fr;
     row-gap: ${Clamp(96, 144, 172, "px")};
-    margin: ${Clamp(32, 96, 128, "px")} auto;
+    margin: ${Clamp(32, 96, 128, "px")} auto 0;
   }
   .person-border {
     border-radius: 50%;
