@@ -193,7 +193,7 @@ export const query = graphql`
 
 export const Head = ({
   data: {
-    page: { seo }
+    page: { seo, faq }
   },
   location: { pathname }
 }) => (
@@ -205,6 +205,7 @@ export const Head = ({
       { name: "Strona główna", path: '' },
       { name: "Współpraca", path: pathname },
     ]}
+    schemaFaq={faq?.list}
   />
 )
 

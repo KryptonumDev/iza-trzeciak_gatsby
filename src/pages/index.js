@@ -129,7 +129,7 @@ export const query = graphql`
 
 export const Head = ({
   data: {
-    page: { seo }
+    page: { seo, faq }
   },
 }) => (
   <Seo
@@ -138,6 +138,7 @@ export const Head = ({
     breadcrumbs={[
       { name: "Strona główna", path: '' },
     ]}
+    schemaFaq={faq?.list}
   />
 )
 
