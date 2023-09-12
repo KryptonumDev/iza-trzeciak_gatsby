@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import FormDropdown from '../moleculas/FormDropdown';
@@ -105,7 +105,6 @@ const ContactForm = ({ email }) => {
     .then(response => {
       if(response.success){
         setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-        window.fathom.trackGoal("IVVHPPVO", 0);
         reset();
       } else {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
@@ -115,6 +114,11 @@ const ContactForm = ({ email }) => {
       setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
     })
   }
+
+  useEffect(() => {
+    sentStatus.success && window.fathom.trackGoal("IVVHPPVO", 0);
+  }, [sentStatus])
+
 
   return (
     <Wrapper className='contactForm'>
