@@ -12,7 +12,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interFont"
+      key="ErodeMedium"
     />,
     <link
       rel="preload"
@@ -20,7 +20,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
-      key="interFont"
+      key="ErodeBold"
     />,
   ])
 }
