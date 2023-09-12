@@ -34,10 +34,12 @@ module.exports = {
         display: `standalone`,
         icon: `src/resources/images/logo.png`,
         start_url: `/`,
-        background_color: `#F8FBFD`,
-        theme_color: `#F8FBFD`,
+        background_color: `#EDF0F2`,
+        theme_color: `#EDF0F2`,
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
   ],
   trailingSlash: "never"
 };
