@@ -26,10 +26,10 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     {
-      resolve: 'gatsby-plugin-fathom',
+      resolve: `@raae/gatsby-plugin-fathom`,
       options: {
-        siteId: 'YLEWTWED'
-      }
+        site: "YLEWTWED",
+      },
     },
     {
       resolve: 'gatsby-plugin-manifest',

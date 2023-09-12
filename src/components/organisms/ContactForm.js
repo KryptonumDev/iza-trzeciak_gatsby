@@ -13,7 +13,7 @@ import { Clamp } from '../../utils/functions';
 import FormError from '../moleculas/FormError';
 import Loader from '../atoms/Loader';
 import { regex } from '../../constants/regex';
-import { useGoal } from 'gatsby-plugin-fathom'
+import { useFathom } from "@raae/gatsby-plugin-fathom";
 
 const handlePhoneChange = (event) => {
   event.target.value = event.target.value.replace(/[^0-9+-]/g, '');
@@ -55,7 +55,8 @@ const subjects = [
 const ContactForm = ({ email }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
   const [ step, setStep ] = useState(0);
-  const [ subjectSelected, setSubjectSelected ] = useState(null);
+  const [subjectSelected, setSubjectSelected] = useState(null);
+  const { trackGoal } = useFathom();
   
   const {
     register,
@@ -106,7 +107,7 @@ const ContactForm = ({ email }) => {
     .then(response => {
       if(response.success){
         setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-        useGoal('IVVHPPVO');
+        trackGoal("IVVHPPVO", 0)
         reset();
       } else {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));

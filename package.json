@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.0.7",
+    "@raae/gatsby-plugin-fathom": "^0.1.0",
     "@sendgrid/mail": "^7.7.0",
     "babel-plugin-styled-components": "^2.1.4",
     "framer-motion": "^10.16.1",
     "gatsby": "^5.11.0",
-    "gatsby-plugin-fathom": "^2.1.1",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
