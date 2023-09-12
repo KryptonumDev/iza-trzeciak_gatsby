@@ -34,7 +34,6 @@ const Wrapper = styled.div`
     columns: 2;
     gap: 64px;
   }
-  font-size: ${Clamp(16, 18, 20)};
   p {
     line-height: 150%;
     & + p {
