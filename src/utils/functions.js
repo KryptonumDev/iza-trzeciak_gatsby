@@ -47,10 +47,13 @@ export const slugify = (text) => {
   return text.toString().toLowerCase().replace(/\s+/g, '-').replace(p, c => b.charAt(a.indexOf(c))).replace(/&/g, '-i-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
 };
 
-export const smoothScroll = (e) => {
-  e.preventDefault();
-  const targetId = e.target.getAttribute('href');
-  const targetElement = document.querySelector(targetId);
-  targetElement.scrollIntoView({ behavior: 'smooth' });
-  history.pushState(null, '', targetId);
+export const smoothScroll = (e, to) => {
+  if(to.startsWith('#')) {
+    e.preventDefault();
+    const targetElement = document.querySelector(to);
+    if(targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      history.pushState(null, '', to);
+    }
+  }
 }

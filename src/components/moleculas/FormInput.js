@@ -29,7 +29,8 @@ const Wrapper = styled.label`
     display: block;
     margin-bottom: 4px;
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 2px 16px;
     justify-content: space-between;
     align-items: center;
   }
@@ -40,11 +41,17 @@ const Wrapper = styled.label`
     background-color: var(--primary-200);
     padding: 16px;
     width: 100%;
-    &[aria-invalid="true"] {
-      border-color: var(--error-700);
-    }
     &::placeholder {
       color: var(--primary-400);
+    }
+    transition: border-color .3s;
+    &:hover,
+    &:focus {
+      border-color: var(--primary-500);
+      outline: none;
+    }
+    &[aria-invalid="true"] {
+      border-color: var(--error-700);
     }
   }
   input {

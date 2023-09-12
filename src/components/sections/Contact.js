@@ -26,7 +26,7 @@ const Contact = ({ data: { heading, paragraph } }) => {
     <Wrapper id='kontakt'>
       <header>
         <div>
-          <Heading level='h2' className='h3' image={<Image data={global.image} className='person-border' />}>{heading}</Heading>
+          <Heading level='h2' image={<Image data={global.image} className='person-border' />}>{heading}</Heading>
         </div>
         <Markdown className='paragraph'>{paragraph}</Markdown>
       </header>
@@ -47,6 +47,10 @@ const Wrapper = styled.section`
   header {
     h2 {
       margin-bottom: 24px;
+      font-size: ${Clamp(36, 44, 32)};
+      @media (max-width: 1149px){
+        font-size: ${Clamp(36, 44, 44)};
+      }
     }
     .paragraph {
       p:not(:last-child){

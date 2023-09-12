@@ -53,9 +53,6 @@ const Footer = ({ links }) => {
           <li>
             <Link to='/polityka-prywatnosci'>Polityka prywatności</Link>
           </li>
-          <li>
-            <Link to='/polityka-prywatnosci'>Pliki Cookies</Link>
-          </li>
         </ul>
       </div>
     </FooterWrapper>

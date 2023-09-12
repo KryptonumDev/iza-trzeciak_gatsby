@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import FormDropdown from '../moleculas/FormDropdown';
@@ -49,7 +49,7 @@ const subjects = [
 
 const ContactForm = ({ email }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
-  const [step, setStep] = useState(0);
+  const [ step, setStep ] = useState(0);
   const [ subjectSelected, setSubjectSelected ] = useState(null);
   
   const {
@@ -59,7 +59,7 @@ const ContactForm = ({ email }) => {
     trigger,
     resetField,
     formState: { errors },
-  } = useForm({ mode: 'onSubmit' })
+  } = useForm({ mode: 'all' })
 
   const handleNextStep = async (step) => {
     if (step === 1 && await trigger(['name', 'email', 'tel'])) {
@@ -101,6 +101,7 @@ const ContactForm = ({ email }) => {
     .then(response => {
       if(response.success){
         setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+        window.fathom.trackGoal("IVVHPPVO", 0);
         reset();
       } else {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
@@ -125,7 +126,7 @@ const ContactForm = ({ email }) => {
           <FormInput
             label="Imię"
             type="text"
-            register={register('name', { required: true })}
+            register={register('name', { required: true, minLength: 2 })}
             errors={errors}
             data-step='0'
             tabIndex={step !== 0 ? -1 : 0}
@@ -343,13 +344,13 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${Clamp(8, 16, 16, 'px')};
     > span {
-
-  font-size: 1rem;
+      font-size: 1rem;
       grid-column: 4/1;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 2px 16px;
       margin-bottom: calc(${Clamp(-12, -12, -4, 'px')} )
     }
   }

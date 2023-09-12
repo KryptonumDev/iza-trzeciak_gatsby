@@ -22,6 +22,7 @@ const FormDropdown = ({ register, resetField, label, values, errors, ...props })
         disabled={!values}
         value={selectedValue}
         onChange={(e) => setSelectedValue(e.target.value)}
+        aria-invalid={errors[register.name] ? true : false}
         {...props}
       >
         <option disabled value='blank'>- Wybierz -</option>
@@ -34,6 +35,15 @@ const FormDropdown = ({ register, resetField, label, values, errors, ...props })
 }
 
 const Wrapper = styled.label`
+  > span {
+    display: block;
+    margin-bottom: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
   font-size: 1rem;
   select {
     width: 100%;
@@ -43,11 +53,17 @@ const Wrapper = styled.label`
     padding: 16px 60px 16px 16px;
     width: 100%;
     height: 64px;
-    &[aria-invalid="true"] {
-      border-color: var(--error);
-    }
     &::placeholder {
       color: var(--primary-400);
+    }
+    transition: border-color .3s;
+    &:hover,
+    &:focus {
+      border-color: var(--primary-500);
+      outline: none;
+    }
+    &[aria-invalid="true"] {
+      border-color: var(--error-700);
     }
   }
 `

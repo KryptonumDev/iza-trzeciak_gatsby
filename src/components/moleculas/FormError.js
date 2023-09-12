@@ -6,7 +6,7 @@ const FormError = ({ error }) => {
     error && (
       <Wrapper className='error'>
         <Error />
-        <span>{'To pole jest wymagane'}</span>
+        <span>{'Wypełnij pole prawidłowo'}</span>
       </Wrapper>
     )
   );

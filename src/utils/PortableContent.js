@@ -3,9 +3,13 @@ import styled from "styled-components";
 import { PortableText } from "@portabletext/react";
 import { Clamp } from "./functions";
 
+
 const components = {
   listItem: {
-    bullet: ({ children }) => <li><span>{children}</span></li>,
+    bullet: ({ children }) => <li><ListBullet /><span>{children}</span></li>,
+  },
+  list: {
+    bullet: ({ children }) => <ul className="unorderedList">{children}</ul>,
   },
   marks: {
     link: ({ value: { href }, children }) => {
@@ -38,31 +42,17 @@ const Wrapper = styled.div`
     }
   }
   > h2 {
-    zoom: 1;
+    font-weight: 700;
     font-size: ${Clamp(18, 18, 20)};
     &:not(:first-child) {
       margin-top: ${Clamp(32, 42, 42, 'px')};
     }
     margin-bottom: 24px;
   }
-  ul, ol {
-    list-style-type: none;
+  ol {
     margin: 16px 0;
     display: grid;
-    grid-template-columns: 1fr;
     row-gap: 16px;
-  }
-  ul {
-    li {
-      display: grid;
-      column-gap: 8px;
-      grid-template-columns: 24px 1fr;
-      svg {
-        margin-top: .1em;
-      }
-    }
-  }
-  ol {
     counter-reset: counter;
     font-size: 16px;
     li {
@@ -87,5 +77,22 @@ const Wrapper = styled.div`
     }
   }
 `
+
+const ListBullet = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'>
+    <path
+      fill='#2E445A'
+      d='M4 11.25a.75.75 0 000 1.5v-1.5zm0 1.5h16v-1.5H4v1.5z'
+      opacity='0.5'
+    ></path>
+    <path
+      stroke='#2E445A'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='1.5'
+      d='M14 6l6 6-6 6'
+    ></path>
+  </svg>
+)
 
 export default PortableContent;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { smoothScroll } from "../../utils/functions";
 
 const Button = ({ data, theme = 'primary', children, to, className, ...props }) => {
   if(data){
@@ -24,7 +25,7 @@ const Button = ({ data, theme = 'primary', children, to, className, ...props }) 
           {children}
         </StyledAnchor>
       ) : (
-        <StyledAnchor as={Link} to={to} {...commonProps}>
+        <StyledAnchor as={Link} to={to} {...commonProps} onClick={(e) => smoothScroll(e, to)}>
           {children}
         </StyledAnchor>
       )

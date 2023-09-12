@@ -38,14 +38,17 @@ const Wrapper = styled.label`
       border-radius: 8px;
       border: 2px solid #2E445A50;
       transition: border-color .2s var(--easing);
-      &[aria-invalid="true"]{
-        border-color: var(--error-700);
-      }
       &:checked {
         border-color: #2E445A;
         & + svg {
           transform: translate(-50%, -50%) scale(1);
         }
+      }
+      &:focus {
+        border-color: var(--primary-500);
+      }
+      &[aria-invalid="true"]{
+        border-color: var(--error-700);
       }
     }
     svg {
@@ -56,6 +59,9 @@ const Wrapper = styled.label`
       transform: translate(-50%, -50%) scale(0) rotate(-5deg);
       transition: transform .2s var(--easing);
     }
+  }
+  &:hover .tick input {
+    border-color: var(--primary-500);
   }
   span.label {
     svg {

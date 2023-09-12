@@ -34,7 +34,7 @@ const TextSection = ({ data: { heading, paragraph, text, list } }) => {
 const Wrapper = styled.section`
   display: grid;
   align-items: flex-start;
-  gap: ${Clamp(32, 48, 48, 'px')} ${Clamp(64, 82, 110, 'px')};
+  gap: 0 ${Clamp(64, 82, 110, 'px')};
   header {
     h2 {
       margin-bottom: ${Clamp(24, 32, 40, 'px')};
@@ -79,7 +79,7 @@ const Wrapper = styled.section`
     header {
       h2 {
         width: fit-content;
-        padding-bottom: 16px;
+        padding-bottom: 24px;
         border-bottom: 1px solid var(--primary-400);
       }
     }

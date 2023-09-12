@@ -41,12 +41,9 @@ const GlobalStyle = createGlobalStyle`
 
     --link-color: var(--primary-600);
     --easing: cubic-bezier(0.6, 0.4, 0.2, 0.8);
-    --pageMargin: 40px;
-    @media (max-width: 849px){
-     --pageMargin: 80px;
-    }
-    @media (max-width: 649px){
-     --pageMargin: ${Clamp(16, 40, 40, 'px')};
+    --pageMargin: clamp(16px, calc(40vw/7.68), 40px);
+    @media (max-width: 899px) and (min-width: 649px) {
+      --pageMargin: clamp(40px, calc(80vw/7.68), 80px);
     }
   }
   body.scrollLock {
@@ -55,7 +52,6 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     scroll-padding-top: 111px;
-    scroll-behavior: smooth;
   }
   body {
     min-width: 320px;
@@ -65,18 +61,17 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Erode', serif;
     background-color: var(--primary-300);
     color: var(--primary-500);
-    font-size: 18px;
     font-size: ${Clamp(18, 18, 20)};
     line-height: 140%;
   }
   :focus {
     outline: none;
   }
-  .tabbing :focus-visible {
+  :focus-visible {
     outline: 1px solid var(--primary-600);
     outline-offset: 5px;
   }
-  .tabbing .focus-light :focus-visible {
+  .focus-light :focus-visible {
     outline: 1px solid var(--primary-200);
   }
   main,
@@ -146,14 +141,14 @@ const GlobalStyle = createGlobalStyle`
       font-weight: inherit;
       color: var(--primary-600);
     }
-    @media (max-width: 369px){
-      zoom: .8;
-    }
   }
   h1, .h1 {
     font-size: ${Clamp(40, 56, 64)};
     letter-spacing: -.025em;
     line-height: 114%;
+    @media (max-width: 369px){
+      font-size: ${Clamp(34, 56, 64)};
+    }
   }
   h2, .h2 {
     font-size: ${Clamp(36, 44, 56)};
@@ -232,6 +227,9 @@ const GlobalStyle = createGlobalStyle`
   .unorderedList {
     list-style-type: none;
     margin-top: 16px;
+    + * {
+      margin-top: 16px;
+    }
     li {
       display: grid;
       grid-template-columns: auto 1fr;

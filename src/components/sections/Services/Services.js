@@ -61,7 +61,7 @@ const Wrapper = styled.section`
       @media (max-width: 649px){
         grid-template-columns: 1fr;
       }
-      gap: 32px ${Clamp(32, 32, 144, 'px')};
+      gap: 24px ${Clamp(32, 32, 144, 'px')};
       border-top: 1px solid var(--primary-400);
       border-bottom: 1px solid var(--primary-400);
       padding: ${Clamp(32, 42, 56, 'px')} ${Clamp(8, 12, 110, 'px')};
