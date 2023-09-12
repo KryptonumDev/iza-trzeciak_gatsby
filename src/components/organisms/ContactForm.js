@@ -14,6 +14,10 @@ import FormError from '../moleculas/FormError';
 import Loader from '../atoms/Loader';
 import { regex } from '../../constants/regex';
 
+const handlePhoneChange = (event) => {
+  event.target.value = event.target.value.replace(/[^0-9+-]/g, '');
+};
+
 const subjects = [
   {
     name: 'Konsultacje rozwiązań',
@@ -145,7 +149,10 @@ const ContactForm = ({ email }) => {
             label="Nr telefonu (opcjonalne)"
             type="tel"
             placeholder="___-___-___"
-            register={register('tel', { pattern: regex.phone })}
+            register={register('tel', {
+              pattern: regex.phone,
+              onChange: (e) => handlePhoneChange(e)
+            })}
             errors={errors}
             data-step='0'
             tabIndex={step !== 0 ? -1 : 0}
