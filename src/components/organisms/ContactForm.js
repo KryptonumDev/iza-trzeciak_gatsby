@@ -13,6 +13,7 @@ import { Clamp } from '../../utils/functions';
 import FormError from '../moleculas/FormError';
 import Loader from '../atoms/Loader';
 import { regex } from '../../constants/regex';
+import { useGoal } from 'gatsby-plugin-fathom'
 
 const handlePhoneChange = (event) => {
   event.target.value = event.target.value.replace(/[^0-9+-]/g, '');
@@ -105,6 +106,7 @@ const ContactForm = ({ email }) => {
     .then(response => {
       if(response.success){
         setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+        useGoal('IVVHPPVO');
         reset();
       } else {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));

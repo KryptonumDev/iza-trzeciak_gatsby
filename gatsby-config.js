@@ -26,6 +26,12 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     {
+      resolve: 'gatsby-plugin-fathom',
+      options: {
+        siteId: 'YLEWTWED'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: `Rzeczoznawca do spraw zabezpieczeń przeciwpożarowych - Iza Trzeciak`,
