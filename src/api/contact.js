@@ -5,7 +5,7 @@ import { regex } from '../constants/regex';
 import { removeHtmlTags } from '../utils/functions';
 const senderEmail = {
   name: 'Iza Trzeciak',
-  to: 'kryptonumstudio@gmail.com',
+  to: 'kontakt@izatrzeciak.pl',
   from: 'kontakt@izatrzeciak.pl'
 };
 
