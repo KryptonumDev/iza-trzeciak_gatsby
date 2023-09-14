@@ -89,6 +89,10 @@ const Wrapper = styled.section`
         grid-template-columns: 1fr auto;
         align-items: flex-start;
         gap: ${Clamp(16, 32, 32, 'px')};
+        transition: color .3s;
+        &:hover {
+          color: var(--primary-700);
+        }
       }
     }
   }
