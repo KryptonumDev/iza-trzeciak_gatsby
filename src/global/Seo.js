@@ -35,7 +35,6 @@ const Seo = ({ title, description, url, children, breadcrumbs, schemaFaq }) => {
   
   return (
     <>
-      <meta name="robots" content="noindex" />
       <title>{seo.title}</title>
       <meta property="og:title" content={seo.title} />
       <meta name="description" content={seo.description} />
