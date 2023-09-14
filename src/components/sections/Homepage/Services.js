@@ -5,6 +5,16 @@ import Heading from '../../../utils/Heading';
 import Markdown from '../../../utils/Markdown';
 import Button from '../../atoms/Button';
 import Image from '../../atoms/Image';
+import { Link } from 'gatsby';
+
+export const servicesLinks = [
+  'scenariusze-pozarowe-i-matryce-sterowan',
+  'ekspertyzy-stanu-ochrony-ppoz',
+  'uzgadnianie-projektow-budowlanych',
+  'uzgadnianie-projektow-urzadzen-ppoz',
+  'opinia-techniczna',
+  'doradztwo-konsultacje'
+]
 
 const Services = ({
   data: {
@@ -27,10 +37,12 @@ const Services = ({
         ))}
       </div>
       <ul className="list">
-        {services_List.map((item, i) => (
+        {services_List.map(({ title, img }, i) => (
           <li key={i}>
-            <Markdown>{item.title}</Markdown>
-            <Image data={item.img} />
+            <Link to={`/ppoz-wspolpraca/#${servicesLinks[i]}`}>
+              <Markdown>{title}</Markdown>
+              <Image data={img} />
+            </Link>
           </li>
         ))}
       </ul>
@@ -69,13 +81,15 @@ const Wrapper = styled.section`
       &:not(:last-child){
         margin-bottom: ${Clamp(16, 20, 24, 'px')};
       }
-      border-top: 1px solid var(--primary-400);
-      border-bottom: 1px solid var(--primary-400);
-      padding: ${Clamp(16, 24, 24, 'px')} ${Clamp(12, 40, 24, 'px')};
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: flex-start;
-      gap: ${Clamp(16, 32, 32, 'px')};
+      a {
+        border-top: 1px solid var(--primary-400);
+        border-bottom: 1px solid var(--primary-400);
+        padding: ${Clamp(16, 24, 24, 'px')} ${Clamp(12, 40, 24, 'px')};
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: flex-start;
+        gap: ${Clamp(16, 32, 32, 'px')};
+      }
     }
   }
   @media (max-width: 1049px){

@@ -36,18 +36,22 @@ const Footer = ({ links }) => {
           ))}
         </ul>
         <ul className="social">
-          <li>
-            <a href={global.linkedin} target='_blank' rel="noreferrer">
-              <Linkedin />
-              <span>LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a href={global.facebook} target='_blank' rel="noreferrer">
-              <Facebook />
-              <span>Facebook</span>
-            </a>
-          </li>
+          {global.linkedin && (
+            <li>
+              <a href={global.linkedin} target='_blank' rel="noreferrer">
+                <Linkedin />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+          )}
+          {global.facebook && (
+            <li>
+              <a href={global.facebook} target='_blank' rel="noreferrer">
+                <Facebook />
+                <span>Facebook</span>
+              </a>
+            </li>
+          )}
         </ul>
         <ul className="legal">
           <li>

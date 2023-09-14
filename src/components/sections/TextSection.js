@@ -5,9 +5,9 @@ import Markdown from '../../utils/Markdown';
 import Image from '../atoms/Image';
 import { Clamp } from '../../utils/functions';
 
-const TextSection = ({ data: { heading, paragraph, text, list } }) => {
+const TextSection = ({ data: { heading, paragraph, text, list }, id }) => {
   return (
-    <Wrapper>
+    <Wrapper id={id || ''}>
       <header>
         <Heading level='h2' className='h3'>{heading}</Heading>
         {paragraph && (

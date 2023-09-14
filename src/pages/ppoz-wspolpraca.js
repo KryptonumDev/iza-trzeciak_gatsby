@@ -6,6 +6,7 @@ import Contact from "../components/sections/Contact";
 import Faq from "../components/sections/Faq";
 import CtaSection from "../components/sections/CtaSection";
 import TextSection from "../components/sections/TextSection";
+import { servicesLinks } from "../components/sections/Homepage/Services";
 
 const CooperationPage = ({
   data: { page: {
@@ -33,14 +34,14 @@ const CooperationPage = ({
         hero_Paragraph,
         hero_Cta,
       }} />
-      <TextSection data={textSection} />
-      <TextSection data={textSection2} />
+      <TextSection data={textSection} id={servicesLinks[0]} />
+      <TextSection data={textSection2} id={servicesLinks[1]} />
       <CtaSection data={ctaSection} />
-      <TextSection data={textSection3} />
-      <TextSection data={textSection4} />
-      <TextSection data={textSection5} />
+      <TextSection data={textSection3} id={servicesLinks[2]} />
+      <TextSection data={textSection4} id={servicesLinks[3]} />
+      <TextSection data={textSection5} id={servicesLinks[4]} />
       <CtaSection data={ctaSection2} />
-      <TextSection data={textSection6} />
+      <TextSection data={textSection6} id={servicesLinks[5]} />
       <Contact data={contact} />
       <Faq data={faq} />
     </>
