@@ -107,7 +107,6 @@ const ContactForm = ({ email }) => {
     .then(response => {
       if(response.success){
         setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-        trackGoal("IVVHPPVO", 0)
         reset();
       } else {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
@@ -117,6 +116,10 @@ const ContactForm = ({ email }) => {
       setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
     })
   }
+
+  useEffect(() => {
+    sentStatus.success && trackGoal("IVVHPPVO", 0);
+  }, [sentStatus])
 
   return (
     <Wrapper className='contactForm'>
