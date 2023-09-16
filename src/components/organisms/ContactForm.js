@@ -118,8 +118,12 @@ const ContactForm = ({ email }) => {
   }
 
   useEffect(() => {
-    sentStatus.success && trackGoal("IVVHPPVO", 0);
-  }, [sentStatus])
+    if (sentStatus.success) {
+      try {
+        trackGoal("IVVHPPVO", 0);
+      } catch { /* empty */ }
+    }
+  }, [sentStatus]);
 
   return (
     <Wrapper className='contactForm'>
