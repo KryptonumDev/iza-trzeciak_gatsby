@@ -17,7 +17,7 @@
   "dependencies": {
     "@portabletext/react": "^3.0.7",
     "@raae/gatsby-plugin-fathom": "^0.1.0",
-    "@sendgrid/mail": "^7.7.0",
+    "resend": "^3.2.0",
     "babel-plugin-styled-components": "^2.1.4",
     "framer-motion": "^10.16.1",
     "gatsby": "^5.11.0",

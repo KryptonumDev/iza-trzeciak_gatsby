@@ -1,12 +1,11 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_APIKEY);
+import { Resend } from 'resend';
 
 import { regex } from '../constants/regex';
 import { removeHtmlTags } from '../utils/functions';
 const senderEmail = {
   name: 'Iza Trzeciak',
+  from: 'formularz@send.izatrzeciak.pl',
   to: 'kontakt@izatrzeciak.pl',
-  from: 'kontakt@izatrzeciak.pl'
 };
 
 const isValidEmail = (email) => {
@@ -38,40 +37,43 @@ export default function handler(req, res) {
     return res.status(404).send('');
   }
 
-  const { name='', email='', tel='', subject='', subjectInfo='', additionalInfo='', legal='' } = req.body;
+  const { name = '', email = '', tel = '', subject = '', subjectInfo = '', additionalInfo = '', legal = '' } = req.body;
 
   (name.trim().length === 0
-  ||
-  !isValidEmail(email)
-  ||
-  (tel && !isValidPhone(tel))
-  ||
-  subject.trim().length === 0
-  ||
-  subjectInfo.trim().length === 0
-  ||
-  (additionalInfo && additionalInfo.trim().length === 0)
-  ||
-  !legal)
-  && res.status(422).json({ success: false })
+    ||
+    !isValidEmail(email)
+    ||
+    (tel && !isValidPhone(tel))
+    ||
+    subject.trim().length === 0
+    ||
+    subjectInfo.trim().length === 0
+    ||
+    (additionalInfo && additionalInfo.trim().length === 0)
+    ||
+    !legal)
+    && res.status(422).json({ success: false })
 
   const messageBody = constructMessage(req.body);
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   const emailMessage = {
-    from: {
-      email: senderEmail.from,
-      name: senderEmail.name
-    },
+    from: `${senderEmail.name} <${senderEmail.from}>`,
     to: senderEmail.to,
-    replyTo: email,
+    reply_to: email,
     subject: `Formularz kontaktowy - ${name} przesyła wiadomość`,
     text: removeHtmlTags(messageBody),
     html: messageBody,
   };
 
-  sgMail
+  resend.emails
     .send(emailMessage)
-    .then(() => {
+    .then(({ error }) => {
+      if (error) {
+        console.log(error);
+        return res.status(422).json({ success: false });
+      }
       res.status(200).json({ success: true });
     })
     .catch(() => {
